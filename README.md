@@ -2,15 +2,15 @@
 
 ### Title
 
-Bayesian Structural and Predictive Analyses with the bsvars Family
+bsvars.org design concept: R packages for Predictive Analyses using Bayesian Structural Vector Autoregressions
 
 ### Abstract
 
-The bsvars package family represents a comprehensive framework for Bayesian Structural Vector Autoregression (SVAR) analysis commonly used in empirical Macroeconomics, designed to serve diverse user communities from academic researchers to applied economists at policy institutions. This software ecosystem combines the computational efficiency of compiled C++ code with the accessibility of R's interpreted environment, leveraging Rcpp and RcppArmadillo for optimal performance in intensive Bayesian sampling procedures.
+bsvars.org is a family of R packages offering a comprehensive framework for Bayesian Structural Vector Autoregression analysis commonly used in empirical macroeconomics and finance. It is designed to serve diverse user communities from academic researchers to applied economists at policy institutions. This software ecosystem combines the convenience of data analysis using R with computational efficiency of compiled C++ code, leveraging packages Rcpp and RcppArmadillo to boost performance of computationally intensive Bayesian estimation procedures.
 
-The packages bsvars and bsvarSIGNs, available on CRAN, provide robust tools for structural and predictive analyses through streamlined workflows. Key functionalities include model specification, estimation with progress monitoring, forecasting, forecast error variance decompositions (FEVDs), impulse response functions (IRFs), and historical decompositions (HDs). The framework emphasizes both computational speed and analytical transparency, enabling users to conduct sophisticated econometric analyses with minimal scripting requirements.
+The packages bsvars and bsvarSIGNs, available on CRAN, provide robust tools for structural and predictive analyses through streamlined workflows. Key functionalities include model specification, estimation with progress monitoring, forecasting, forecast error variance decompositions, impulse response functions, historical decompositions, and others. The framework emphasizes both computational speed and analytical transparency, enabling users to conduct sophisticated econometric analyses with minimal scripting requirements.
 
-In this presentation, we will also talk about our experience when developing packages using C++ code as econometricians, focusing on the design features that facilitate reproducibility and extendability, and the challenges we faced.
+In this presentation, we will also talk about our experience when developing packages using C++ code as econometricians and the challenges we faced, focusing on the design features that address the needs of our users.
 
 ### General overview:
 
@@ -80,12 +80,12 @@ In this presentation, we will also talk about our experience when developing pac
 4.  R6 management of the input object (give some code examples here):
 
 - minimal scripting `specify_bsvar*$new()` provides basic setup of: starting values, identification, data matrices, prior hyper-parameters (each of them are lists with R6 structure)
-- ample modeling choices managed by arguments of `specify_bsvar*$new()`
+- ample modeling choices managed by arguments of `specify_bsvar*$new()`
 - possibility of coherent customisation using in functions R6 public elements
 - essential specification variables managed by R6 private elements
 
 5.  combining simple workflows and transparency on what model we work on using S3 generics and methods (give example of `estimate`)
-6.  Interpackage: Establish a set of generics in bsvars and provide model-specific methods over different packages - assure similar workflows - use `Depends:` and `Imports:`
+6.  Interpackage: Establish a set of generics in bsvars and provide model-specific methods over different packages - assure similar workflows - use `Depends:` and `Imports:`
 7.  Interpackage: export all C++ functions in a library, so other developers have access to everything for their R packages with C++ code
 
 - use `LinkingTo` and `Depends:`
@@ -107,7 +107,7 @@ In this presentation, we will also talk about our experience when developing pac
 
 ## Future developments
 
-1.  **bvarPANELs** - Bayesian forecasting of labour market outcomes for the ILO
+1.  **bvarPANELs** - Bayesian forecasting of labour market outcomes for the ILO using Panel VARs
 2.  **bsvarTVPs** with Annika - Time-varying identification of Structural VARs as an extension to **bsvars**
 3.  **bsvarCFs** with Dan - Bayesian forecasting with VARs subject to soft and hard restrictions as an extension to **bsvars** and **bsvarSIGNs**
 4.  **bvarNWish** with Andres and Rui - Bayesian forecasting with VARs with flexible shrinkage
