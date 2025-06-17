@@ -1,5 +1,17 @@
 # 2025-06-iifosf
 
+### Title
+
+Bayesian Structural and Predictive Analyses with the bsvars Family
+
+### Abstract
+
+The bsvars package family represents a comprehensive framework for Bayesian Structural Vector Autoregression (SVAR) analysis commonly used in empirical Macroeconomics, designed to serve diverse user communities from academic researchers to applied economists at policy institutions. This software ecosystem combines the computational efficiency of compiled C++ code with the accessibility of R's interpreted environment, leveraging Rcpp and RcppArmadillo for optimal performance in intensive Bayesian sampling procedures.
+
+The packages bsvars and bsvarSIGNs, available on CRAN, provide robust tools for structural and predictive analyses through streamlined workflows. Key functionalities include model specification, estimation with progress monitoring, forecasting, forecast error variance decompositions (FEVDs), impulse response functions (IRFs), and historical decompositions (HDs). The framework emphasizes both computational speed and analytical transparency, enabling users to conduct sophisticated econometric analyses with minimal scripting requirements.
+
+In this presentation, we will also talk about our experience when developing packages using C++ code as econometricians, focusing on the design features that facilitate reproducibility and extendability, and the challenges we faced.
+
 ### General overview:
 
 1.  bsvars.org is a family of packages for structural and predictive analyses using Bayesian Structural VARs
@@ -78,7 +90,7 @@
 
 - use `LinkingTo` and `Depends:`
 - pointer management
-- consistency in object declarations (th use of `const`)
+- consistency in object declarations (the use of `const`)
 - assignment by reference not working
 - mysterious working of `[[Rcpp:interface(cpp)]]` - does not export al C++ function for some reason
 
@@ -100,3 +112,4 @@
 3.  **bsvarCFs** with Dan - Bayesian forecasting with VARs subject to soft and hard restrictions as an extension to **bsvars** and **bsvarSIGNs**
 4.  **bvarNWish** with Andres and Rui - Bayesian forecasting with VARs with flexible shrinkage
 5.  **bsmars** with Loncan - Bayesian forecasting with Matrix Autoregressions
+
