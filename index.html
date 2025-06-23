@@ -250,13 +250,29 @@
 </div>
 <h3 id="model-specification.">Model specification.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># specify the model</span></span>
-<span id="cb1-2"><a href=""></a>spec <span class="ot">&lt;-</span> specify_bsvarSIGN<span class="sc">$</span><span class="fu">new</span>(</span>
-<span id="cb1-3"><a href=""></a>  Y,</span>
-<span id="cb1-4"><a href=""></a>  <span class="at">p =</span> <span class="dv">4</span>,</span>
-<span id="cb1-5"><a href=""></a>  <span class="at">sign_irf =</span> sign_irf,</span>
-<span id="cb1-6"><a href=""></a>  <span class="at">sign_structural =</span> sign_structural</span>
-<span id="cb1-7"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>sign_irf[, , <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    1   NA   NA   NA
+[2,]   NA   NA   NA   NA
+[3,]   -1   NA   NA   NA
+[4,]    1   NA   NA   NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>sign_structural</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    1   -1   -1    1
+[2,]   NA   NA   NA   NA
+[3,]   NA   NA   NA   NA
+[4,]   NA   NA   NA   NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># specify the model</span></span>
+<span id="cb5-2"><a href=""></a>spec <span class="ot">&lt;-</span> specify_bsvarSIGN<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb5-3"><a href=""></a>  Y,</span>
+<span id="cb5-4"><a href=""></a>  <span class="at">p =</span> <span class="dv">4</span>,</span>
+<span id="cb5-5"><a href=""></a>  <span class="at">sign_irf =</span> sign_irf,</span>
+<span id="cb5-6"><a href=""></a>  <span class="at">sign_structural =</span> sign_structural</span>
+<span id="cb5-7"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="the-packages-and-their-working-3" class="slide level2">
@@ -266,8 +282,8 @@
 </div>
 <h3 id="estimation.">Estimation.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># sample posterior draws</span></span>
-<span id="cb2-2"><a href=""></a>post <span class="ot">&lt;-</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">5000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># sample posterior draws</span></span>
+<span id="cb6-2"><a href=""></a>post <span class="ot">&lt;-</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">5000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>**************************************************|
  bsvarSIGNs: Bayesian Structural VAR with sign,   |
@@ -286,9 +302,9 @@
 </div>
 <h3 id="forecasting.">Forecasting.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>post <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href=""></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href=""></a>  <span class="fu">plot</span>(<span class="at">data_in_plot =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>post <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href=""></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href=""></a>  <span class="fu">plot</span>(<span class="at">data_in_plot =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
@@ -299,9 +315,9 @@
 </div>
 <h3 id="forecast-error-variance-decomposition.">Forecast error variance decomposition.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>post <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href=""></a>  <span class="fu">compute_variance_decompositions</span>(<span class="at">h =</span> <span class="dv">20</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href=""></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>post <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href=""></a>  <span class="fu">compute_variance_decompositions</span>(<span class="at">h =</span> <span class="dv">20</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href=""></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
@@ -312,9 +328,9 @@
 </div>
 <h3 id="impulse-responses.">Impulse responses.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>post <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href=""></a>  <span class="fu">compute_impulse_responses</span>(<span class="at">h =</span> <span class="dv">20</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href=""></a>  <span class="fu">plot</span>(<span class="at">probability =</span> <span class="fl">0.68</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>post <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href=""></a>  <span class="fu">compute_impulse_responses</span>(<span class="at">h =</span> <span class="dv">20</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href=""></a>  <span class="fu">plot</span>(<span class="at">probability =</span> <span class="fl">0.68</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
@@ -325,9 +341,9 @@
 </div>
 <h3 id="historical-decompositions.">Historical Decompositions.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>post <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href=""></a>  <span class="fu">compute_historical_decompositions</span>() <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href=""></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>post <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href=""></a>  <span class="fu">compute_historical_decompositions</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href=""></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>**************************************************|
 bsvars: Bayesian Structural Vector Autoregressions|
@@ -451,22 +467,22 @@ bsvars: Bayesian Structural Vector Autoregressions|
 <li>simple workflows</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>us_fiscal_lsuw <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href=""></a>  specify_bsvar<span class="sc">$</span><span class="fu">new</span>(<span class="at">p =</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href=""></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a href=""></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">5000</span>) <span class="ot">-&gt;</span> post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>us_fiscal_lsuw <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href=""></a>  specify_bsvar<span class="sc">$</span><span class="fu">new</span>(<span class="at">p =</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href=""></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href=""></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">5000</span>) <span class="ot">-&gt;</span> post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>full transparency on what model is used</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>bsvars<span class="sc">::</span>estimate</span>
-<span id="cb10-2"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVAR</span>
-<span id="cb10-3"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVART</span>
-<span id="cb10-4"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARMIX</span>
-<span id="cb10-5"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARSV</span>
-<span id="cb10-6"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARMSH</span>
-<span id="cb10-7"><a href=""></a>bsvarSIGNs<span class="sc">::</span>estimate.BSVARSIGN</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>bsvars<span class="sc">::</span>estimate</span>
+<span id="cb14-2"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVAR</span>
+<span id="cb14-3"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVART</span>
+<span id="cb14-4"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARMIX</span>
+<span id="cb14-5"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARSV</span>
+<span id="cb14-6"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARMSH</span>
+<span id="cb14-7"><a href=""></a>bsvarSIGNs<span class="sc">::</span>estimate.BSVARSIGN</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bsvars.org-design-concept-7" class="slide level2">

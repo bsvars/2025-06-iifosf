@@ -119,6 +119,10 @@ sign_structural[1, ] <- c(1, -1, -1, 1)
 ```
 
 ```{R}
+sign_irf[, , 1]
+
+sign_structural
+
 # specify the model
 spec <- specify_bsvarSIGN$new(
   Y,
