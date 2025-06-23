@@ -326,7 +326,7 @@ $$ $$
 
 ### 7. export all **C++** functions in a library
 
-- for other developers to access all code for their **R** package development using **C++** code
+- for developers to access all code for their **R** package development using **C++** code
 - implement through `LinkingTo:` and `Depends:`
 - pointer management
 - assure consistency in object declarations
@@ -337,6 +337,90 @@ $$ $$
 
 
 
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 8. Outputs and workflows to target various users
+
+- provide all the outputs, posterior draws
+  - insightful users can can compute demanded quantities not provided in the packages
+- provide all the basic functionality with well-designed workflows
+  - `plot` and `summary` methods for users valuing simplicity in scripting 
+  - *It's amazing how much you do with a few lines of code!*
+
+
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 9. Extensive resources
+
+- documentation pitched to users of various level of advancement
+- **pkgdown** website with package features, social media chanels, and updates on the most recent presentations!
+- a vignette to be sent to the *Journal of Statistical Software* or the *R Journal*
+
+
+
+
+
+
+
+
+
+## future developments
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### bsvars and bsvarSIGNs
+
+- **bsvars** include more models non-normal and heteroskedastic
+- **bsvars** provide computations for more outputs
+  - cummulative IRF and HD
+  - connectedness measures
+- **bsvars** include more model verification techniques
+- **bsvarSIGNs** include COVID modelling
+- **bsvarSIGNs** implement parallel computations for independence sampler
+- **bsvarSIGNs** improve hyperparameter estimation
+- **bsvarSIGNs** implement some user-demanded features
+- **bsvars** and **bsvarSIGNs** JSS submissions
+- **bsvars** and **bsvarSIGNs** forecasting performance evaluation **??**
+
+## future developments
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### upcoming packages 
+
+- **bvarPANELs** - Bayesian Panel VAR forecasting of labour market outcomes for the International Labour Organization
+- **bsvarTVPs** with Annika Camehl - Time-varying identification of Structural VARs as an extension to **bsvars**
+- **bsvarCFs** with Dan Zhu - Bayesian forecasting with VARs subject to soft and hard restrictions as an extension to **bsvars** and **bsvarSIGNs**
+- **bvarGIGs** with Rui Liu and Andres Ramirez Hassan - Bayesian forecasting with VARs with flexible shrinkage
+- **bsmars** with Loncan Li - Bayesian forecasting with Matrix Autoregression
 
 
 

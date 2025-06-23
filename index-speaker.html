@@ -601,12 +601,82 @@
 </ul>
 <h3 id="export-all-c-functions-in-a-library">7. export all <strong>C++</strong> functions in a library</h3>
 <ul>
-<li>for other developers to access all code for their <strong>R</strong> package development using <strong>C++</strong> code</li>
+<li>for developers to access all code for their <strong>R</strong> package development using <strong>C++</strong> code</li>
 <li>implement through <code>LinkingTo:</code> and <code>Depends:</code></li>
 <li>pointer management</li>
 <li>assure consistency in object declarations</li>
 <li>assignment by reference not working accross packages</li>
 <li>mysterious working of <code>[[Rcpp:interface(cpp)]]</code> (does not export al <strong>C++</strong> functions)</li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-7" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="outputs-and-workflows-to-target-various-users">8. Outputs and workflows to target various users</h3>
+<ul>
+<li>provide all the outputs, posterior draws
+<ul>
+<li>insightful users can can compute demanded quantities not provided in the packages</li>
+</ul></li>
+<li>provide all the basic functionality with well-designed workflows
+<ul>
+<li><code>plot</code> and <code>summary</code> methods for users valuing simplicity in scripting</li>
+<li><em>It’s amazing how much you do with a few lines of code!</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-8" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="extensive-resources">9. Extensive resources</h3>
+<ul>
+<li>documentation pitched to users of various level of advancement</li>
+<li><strong>pkgdown</strong> website with package features, social media chanels, and updates on the most recent presentations!</li>
+<li>a vignette to be sent to the <em>Journal of Statistical Software</em> or the <em>R Journal</em></li>
+</ul>
+</section>
+<section id="future-developments-1" class="slide level2">
+<h2>future developments</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="bsvars-and-bsvarsigns">bsvars and bsvarSIGNs</h3>
+<ul>
+<li><strong>bsvars</strong> include more models non-normal and heteroskedastic</li>
+<li><strong>bsvars</strong> provide computations for more outputs
+<ul>
+<li>cummulative IRF and HD</li>
+<li>connectedness measures</li>
+</ul></li>
+<li><strong>bsvars</strong> include more model verification techniques</li>
+<li><strong>bsvarSIGNs</strong> include COVID modelling</li>
+<li><strong>bsvarSIGNs</strong> implement parallel computations for independence sampler</li>
+<li><strong>bsvarSIGNs</strong> improve hyperparameter estimation</li>
+<li><strong>bsvarSIGNs</strong> implement some user-demanded features</li>
+<li><strong>bsvars</strong> and <strong>bsvarSIGNs</strong> JSS submissions</li>
+<li><strong>bsvars</strong> and <strong>bsvarSIGNs</strong> forecasting performance evaluation <strong>??</strong></li>
+</ul>
+</section>
+<section id="future-developments-2" class="slide level2">
+<h2>future developments</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="upcoming-packages">upcoming packages</h3>
+<ul>
+<li><strong>bvarPANELs</strong> - Bayesian Panel VAR forecasting of labour market outcomes for the International Labour Organization</li>
+<li><strong>bsvarTVPs</strong> with Annika Camehl - Time-varying identification of Structural VARs as an extension to <strong>bsvars</strong></li>
+<li><strong>bsvarCFs</strong> with Dan Zhu - Bayesian forecasting with VARs subject to soft and hard restrictions as an extension to <strong>bsvars</strong> and <strong>bsvarSIGNs</strong></li>
+<li><strong>bvarGIGs</strong> with Rui Liu and Andres Ramirez Hassan - Bayesian forecasting with VARs with flexible shrinkage</li>
+<li><strong>bsmars</strong> with Loncan Li - Bayesian forecasting with Matrix Autoregression</li>
 </ul>
 </section>
 <section id="section-1" class="slide level2" data-background-color="#ededed">
