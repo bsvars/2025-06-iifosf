@@ -40,13 +40,7 @@ $$ $$
 
 ### by Adam Wang and Tomasz Woźniak
 
-$$ $$
 
-### the packages and their working {style="color:#ff68b4;"}
-
-### design features {style="color:#ff68b4;"}
-
-### future developments {style="color:#ff68b4;"}
 
 
 
