@@ -522,7 +522,7 @@
 <li>simplicity in package setup/compilation/linking/assuring object compatibility lowering the (perceived) entry requirements</li>
 <li>great community support</li>
 <li>super fast on loops (Gibbs sampler in <strong>bsvars</strong> is a serial job)</li>
-<li>parallel computations using openMP (independent sampler in <strong>bsvarSIGNs</strong>)</li>
+<li>parallel computations using <strong>openMP</strong> (independent sampler in <strong>bsvarSIGNs</strong>)</li>
 </ul>
 </section>
 <section id="bsvars.org-design-concept-3" class="slide level2">
@@ -564,7 +564,20 @@
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="s3-generics-and-methods">5. <code>S3</code> generics and methods</h3>
+<h3 id="establish-a-set-of-generics-in-bsvars">5. Establish a set of generics in <strong>bsvars</strong></h3>
+<ul>
+<li>provide model-specific methods in other packages</li>
+<li>assure similar workflows</li>
+<li>implement through <code>Depends:</code> and <code>Imports:</code></li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-6" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="s3-generics-and-methods">6. <code>S3</code> generics and methods</h3>
 <ul>
 <li>simple workflows</li>
 </ul>
@@ -587,18 +600,12 @@
 <span id="cb2-7"><a href="#cb2-7"></a>bsvarSIGNs<span class="sc">::</span>estimate.BSVARSIGN</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bsvars.org-design-concept-6" class="slide level2">
+<section id="bsvars.org-design-concept-7" class="slide level2">
 <h2>bsvars.org design concept</h2>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="establish-a-set-of-generics-in-bsvars">6. Establish a set of generics in <strong>bsvars</strong></h3>
-<ul>
-<li>provide model-specific methods in other packages</li>
-<li>assure similar workflows</li>
-<li>implement through <code>Depends:</code> and <code>Imports:</code></li>
-</ul>
 <h3 id="export-all-c-functions-in-a-library">7. export all <strong>C++</strong> functions in a library</h3>
 <ul>
 <li>for developers to access all code for their <strong>R</strong> package development using <strong>C++</strong> code</li>
@@ -609,7 +616,7 @@
 <li>mysterious working of <code>[[Rcpp:interface(cpp)]]</code> (does not export al <strong>C++</strong> functions)</li>
 </ul>
 </section>
-<section id="bsvars.org-design-concept-7" class="slide level2">
+<section id="bsvars.org-design-concept-8" class="slide level2">
 <h2>bsvars.org design concept</h2>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
@@ -628,7 +635,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="bsvars.org-design-concept-8" class="slide level2">
+<section id="bsvars.org-design-concept-9" class="slide level2">
 <h2>bsvars.org design concept</h2>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
@@ -650,11 +657,7 @@
 <h3 id="bsvars-and-bsvarsigns">bsvars and bsvarSIGNs</h3>
 <ul>
 <li><strong>bsvars</strong> include more models non-normal and heteroskedastic</li>
-<li><strong>bsvars</strong> provide computations for more outputs
-<ul>
-<li>cummulative IRF and HD</li>
-<li>connectedness measures</li>
-</ul></li>
+<li><strong>bsvars</strong> provide computations for more outputs (cummulative IRF and HD, connectedness measures)</li>
 <li><strong>bsvars</strong> include more model verification techniques</li>
 <li><strong>bsvarSIGNs</strong> include COVID modelling</li>
 <li><strong>bsvarSIGNs</strong> implement parallel computations for independence sampler</li>

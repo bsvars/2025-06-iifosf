@@ -217,7 +217,7 @@ $$ $$
 - simplicity in package setup/compilation/linking/assuring object compatibility lowering the (perceived) entry requirements
 - great community support
 - super fast on loops (Gibbs sampler in **bsvars** is a serial job)
-- parallel computations using openMP (independent sampler in **bsvarSIGNs**)
+- parallel computations using **openMP** (independent sampler in **bsvarSIGNs**)
 
 
 
@@ -267,6 +267,10 @@ $$ $$
 
 
 
+
+
+
+
 ## bsvars.org design concept
 
 ::: footer
@@ -275,7 +279,26 @@ $$ $$
 
 $$ $$
 
-### 5. `S3` generics and methods 
+### 5. Establish a set of generics in **bsvars** 
+
+- provide model-specific methods in other packages 
+- assure similar workflows 
+- implement through `Depends:` and `Imports:`
+
+
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 6. `S3` generics and methods 
 
 - simple workflows 
 ```{r simple}
@@ -310,6 +333,8 @@ bsvarSIGNs::estimate.BSVARSIGN
 
 
 
+
+
 ## bsvars.org design concept
 
 ::: footer
@@ -317,12 +342,6 @@ bsvarSIGNs::estimate.BSVARSIGN
 :::
 
 $$ $$
-
-### 6. Establish a set of generics in **bsvars** 
-
-- provide model-specific methods in other packages 
-- assure similar workflows 
-- implement through `Depends:` and `Imports:`
 
 ### 7. export all **C++** functions in a library
 
@@ -395,9 +414,7 @@ $$ $$
 ### bsvars and bsvarSIGNs
 
 - **bsvars** include more models non-normal and heteroskedastic
-- **bsvars** provide computations for more outputs
-  - cummulative IRF and HD
-  - connectedness measures
+- **bsvars** provide computations for more outputs (cummulative IRF and HD, connectedness measures)
 - **bsvars** include more model verification techniques
 - **bsvarSIGNs** include COVID modelling
 - **bsvarSIGNs** implement parallel computations for independence sampler
