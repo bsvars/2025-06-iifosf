@@ -38,9 +38,11 @@ grad = grDevices::colorRampPalette(c(dar, pin))(5)
 
 $$ $$
 
-### the packages and how their working {style="color:#ff68b4;"}
+### by Adam Wang and Tomasz Woźniak
 
-### target audience {style="color:#ff68b4;"}
+$$ $$
+
+### the packages and their working {style="color:#ff68b4;"}
 
 ### design features {style="color:#ff68b4;"}
 
@@ -49,10 +51,10 @@ $$ $$
 
 
 
-## the packages and how their working
+## the packages and their working
 
 ::: footer
-[bsvars.org design concept](https://bsvars.org/2025-06-iifosf)
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
 :::
 
 ### Structural VARs.
@@ -70,10 +72,10 @@ $$ $$
 
 
 
-## the packages and how their working
+## the packages and their working
 
 ::: footer
-[bsvars.org design concept](https://bsvars.org/2025-06-iifosf)
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
 :::
 
 ### Structural VARs.
@@ -89,7 +91,257 @@ $$ $$
 - identified structural shocks $u_t$
 - time-varying variances
 
-## 
 
-<!-- ![](social.png){.absolute top=30 right=200 width="800"} -->
 
+## the packages and their working
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+### Model specification.
+
+
+
+
+## the packages and their working
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+### Estimation.
+
+
+
+
+## the packages and their working
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+### Forecasting.
+
+
+
+
+## the packages and their working
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+### Forecast error variance decomposition.
+
+
+
+
+## the packages and their working
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+### Impulse responses.
+
+
+
+
+## the packages and their working
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+### Historical Decompositions.
+
+
+
+
+
+## target audience
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+- **academic researchers** reproducibility, transparency, literature context
+
+- **PhD students** communication, extendibility, up-to date with the newest developments
+
+- **master students** simple workflows, documentation and examples, video presentations
+
+- **applied economists**  reliability, speed, incorporating feedback on new features
+
+- **economic governance institutions** workflow integration, reporting practices, off-the-shelf applications
+
+
+
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 1. combine the best of two worlds:
+
+-speed of algorithms written using compiled code, **C++**
+
+-convenience of data analysis using interpreted code, **R**
+
+
+
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 2. **C++** implementation using **Rcpp**
+
+- provide essential functionality for package development
+- manageable dependencies combined with good communication by developers
+- simplicity in package setup/compilation/linking/assuring object compatibility lowering the (perceived) entry requirements
+- great community support
+- super fast on loops (Gibbs sampler in **bsvars** is a serial job)
+- parallel computations using openMP (independent sampler in **bsvarSIGNs**)
+
+
+
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 3. Essential algorithms rely on **Armadillo** through **RcppArmadillo**
+
+- frontier package for linear algebra (speed, speed, speed)
+- fast and reproducible random number generators
+- excellent documentation and support in package development
+- makes **C++** code as expressive as **R**'s
+
+
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 4. **R6** management of the input object
+
+- minimal scripting `specify_bsvar$new()` provides basic setup of:      - starting values
+  - identification
+  - data matrices
+  - prior hyper-parameters (each of them are lists with **R6** structure)
+- ample modelling choices managed by arguments of `specify_bsvar*$new()`
+- possibility of coherent customisation using in functions **R6** public elements
+- essential specification variables managed by **R6** private elements
+
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 5. `S3` generics and methods 
+
+- simple workflows 
+```{r simple}
+#| eval: false
+
+us_fiscal_lsuw |> 
+  specify_bsvar$new(p = 4) |> 
+  estimate(S = 1000) |>
+  estimate(S = 5000) -> post
+```
+
+
+- full transparency on what model is used
+```{r generics}
+#| eval: false
+
+bsvars::estimate
+bsvars::estimate.BSVAR
+bsvars::estimate.BSVART
+bsvars::estimate.BSVARMIX
+bsvars::estimate.BSVARSV
+bsvars::estimate.BSVARMSH
+bsvarSIGNs::estimate.BSVARSIGN
+```
+
+
+
+
+
+
+
+
+
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 6. Establish a set of generics in **bsvars** 
+
+- provide model-specific methods in other packages 
+- assure similar workflows 
+- implement through `Depends:` and `Imports:`
+
+### 7. export all **C++** functions in a library
+
+- for other developers to access all code for their **R** package development using **C++** code
+- implement through `LinkingTo:` and `Depends:`
+- pointer management
+- assure consistency in object declarations
+- assignment by reference not working accross packages
+- mysterious working of `[[Rcpp:interface(cpp)]]` (does not export al **C++** functions)
+
+
+
+
+
+
+
+
+
+
+##  {background-color="#ededed"}
+
+![](social.png){.absolute top=10 right=10 width="1000"}

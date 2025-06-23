@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -333,15 +398,16 @@
 <h2>bsvars.org design concept</h2>
 <h3 id="r-packages-for-predictive-analyses-using-bayesian-structural-vector-autoregressions">R packages for Predictive Analyses using Bayesian Structural Vector Autoregressions</h3>
 <p><span class="math display">\[ \]</span></p>
-<h3 style="color:#ff68b4;" id="the-packages-and-how-their-working">the packages and how their working</h3>
-<h3 style="color:#ff68b4;" id="target-audience">target audience</h3>
+<h3 id="by-adam-wang-and-tomasz-woźniak">by Adam Wang and Tomasz Woźniak</h3>
+<p><span class="math display">\[ \]</span></p>
+<h3 style="color:#ff68b4;" id="the-packages-and-their-working">the packages and their working</h3>
 <h3 style="color:#ff68b4;" id="design-features">design features</h3>
 <h3 style="color:#ff68b4;" id="future-developments">future developments</h3>
 </section>
-<section id="the-packages-and-how-their-working-1" class="slide level2">
-<h2>the packages and how their working</h2>
+<section id="the-packages-and-their-working-1" class="slide level2">
+<h2>the packages and their working</h2>
 <div class="footer">
-<p><a href="https://bsvars.org/2025-06-iifosf">bsvars.org design concept</a></p>
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <h3 id="structural-vars.">Structural VARs.</h3>
 <ul>
@@ -359,10 +425,10 @@
 </ul></li>
 </ul>
 </section>
-<section id="the-packages-and-how-their-working-2" class="slide level2">
-<h2>the packages and how their working</h2>
+<section id="the-packages-and-their-working-2" class="slide level2">
+<h2>the packages and their working</h2>
 <div class="footer">
-<p><a href="https://bsvars.org/2025-06-iifosf">bsvars.org design concept</a></p>
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <h3 id="structural-vars.-1">Structural VARs.</h3>
 <p><span class="math display">\[\begin{align}
@@ -378,9 +444,174 @@
 <li>time-varying variances</li>
 </ul>
 </section>
-<section id="section-1" class="slide level2">
+<section id="the-packages-and-their-working-3" class="slide level2">
+<h2>the packages and their working</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<h3 id="model-specification.">Model specification.</h3>
+</section>
+<section id="the-packages-and-their-working-4" class="slide level2">
+<h2>the packages and their working</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<h3 id="estimation.">Estimation.</h3>
+</section>
+<section id="the-packages-and-their-working-5" class="slide level2">
+<h2>the packages and their working</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<h3 id="forecasting.">Forecasting.</h3>
+</section>
+<section id="the-packages-and-their-working-6" class="slide level2">
+<h2>the packages and their working</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<h3 id="forecast-error-variance-decomposition.">Forecast error variance decomposition.</h3>
+</section>
+<section id="the-packages-and-their-working-7" class="slide level2">
+<h2>the packages and their working</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<h3 id="impulse-responses.">Impulse responses.</h3>
+</section>
+<section id="the-packages-and-their-working-8" class="slide level2">
+<h2>the packages and their working</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<h3 id="historical-decompositions.">Historical Decompositions.</h3>
+</section>
+<section id="target-audience" class="slide level2">
+<h2>target audience</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<ul>
+<li><p><strong>academic researchers</strong> reproducibility, transparency, literature context</p></li>
+<li><p><strong>PhD students</strong> communication, extendibility, up-to date with the newest developments</p></li>
+<li><p><strong>master students</strong> simple workflows, documentation and examples, video presentations</p></li>
+<li><p><strong>applied economists</strong> reliability, speed, incorporating feedback on new features</p></li>
+<li><p><strong>economic governance institutions</strong> workflow integration, reporting practices, off-the-shelf applications</p></li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-1" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="combine-the-best-of-two-worlds">1. combine the best of two worlds:</h3>
+<p>-speed of algorithms written using compiled code, <strong>C++</strong></p>
+<p>-convenience of data analysis using interpreted code, <strong>R</strong></p>
+</section>
+<section id="bsvars.org-design-concept-2" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="c-implementation-using-rcpp">2. <strong>C++</strong> implementation using <strong>Rcpp</strong></h3>
+<ul>
+<li>provide essential functionality for package development</li>
+<li>manageable dependencies combined with good communication by developers</li>
+<li>simplicity in package setup/compilation/linking/assuring object compatibility lowering the (perceived) entry requirements</li>
+<li>great community support</li>
+<li>super fast on loops (Gibbs sampler in <strong>bsvars</strong> is a serial job)</li>
+<li>parallel computations using openMP (independent sampler in <strong>bsvarSIGNs</strong>)</li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-3" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="essential-algorithms-rely-on-armadillo-through-rcpparmadillo">3. Essential algorithms rely on <strong>Armadillo</strong> through <strong>RcppArmadillo</strong></h3>
+<ul>
+<li>frontier package for linear algebra (speed, speed, speed)</li>
+<li>fast and reproducible random number generators</li>
+<li>excellent documentation and support in package development</li>
+<li>makes <strong>C++</strong> code as expressive as <strong>R</strong>’s</li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-4" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="r6-management-of-the-input-object">4. <strong>R6</strong> management of the input object</h3>
+<ul>
+<li>minimal scripting <code>specify_bsvar$new()</code> provides basic setup of: - starting values
+<ul>
+<li>identification</li>
+<li>data matrices</li>
+<li>prior hyper-parameters (each of them are lists with <strong>R6</strong> structure)</li>
+</ul></li>
+<li>ample modelling choices managed by arguments of <code>specify_bsvar*$new()</code></li>
+<li>possibility of coherent customisation using in functions <strong>R6</strong> public elements</li>
+<li>essential specification variables managed by <strong>R6</strong> private elements</li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-5" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="s3-generics-and-methods">5. <code>S3</code> generics and methods</h3>
+<ul>
+<li>simple workflows</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>us_fiscal_lsuw <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2"></a>  specify_bsvar<span class="sc">$</span><span class="fu">new</span>(<span class="at">p =</span> <span class="dv">4</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">5000</span>) <span class="ot">-&gt;</span> post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>full transparency on what model is used</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>bsvars<span class="sc">::</span>estimate</span>
+<span id="cb2-2"><a href="#cb2-2"></a>bsvars<span class="sc">::</span>estimate.BSVAR</span>
+<span id="cb2-3"><a href="#cb2-3"></a>bsvars<span class="sc">::</span>estimate.BSVART</span>
+<span id="cb2-4"><a href="#cb2-4"></a>bsvars<span class="sc">::</span>estimate.BSVARMIX</span>
+<span id="cb2-5"><a href="#cb2-5"></a>bsvars<span class="sc">::</span>estimate.BSVARSV</span>
+<span id="cb2-6"><a href="#cb2-6"></a>bsvars<span class="sc">::</span>estimate.BSVARMSH</span>
+<span id="cb2-7"><a href="#cb2-7"></a>bsvarSIGNs<span class="sc">::</span>estimate.BSVARSIGN</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bsvars.org-design-concept-6" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="establish-a-set-of-generics-in-bsvars">6. Establish a set of generics in <strong>bsvars</strong></h3>
+<ul>
+<li>provide model-specific methods in other packages</li>
+<li>assure similar workflows</li>
+<li>implement through <code>Depends:</code> and <code>Imports:</code></li>
+</ul>
+<h3 id="export-all-c-functions-in-a-library">7. export all <strong>C++</strong> functions in a library</h3>
+<ul>
+<li>for other developers to access all code for their <strong>R</strong> package development using <strong>C++</strong> code</li>
+<li>implement through <code>LinkingTo:</code> and <code>Depends:</code></li>
+<li>pointer management</li>
+<li>assure consistency in object declarations</li>
+<li>assignment by reference not working accross packages</li>
+<li>mysterious working of <code>[[Rcpp:interface(cpp)]]</code> (does not export al <strong>C++</strong> functions)</li>
+</ul>
+</section>
+<section id="section-1" class="slide level2" data-background-color="#ededed">
 <h2></h2>
-<!-- ![](social.png){.absolute top=30 right=200 width="800"} -->
+<p><img data-src="social.png" class="absolute" style="top: 10px; right: 10px; width: 1000px; "></p>
 <div class="footer footer-default">
 
 </div>
