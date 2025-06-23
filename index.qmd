@@ -1,49 +1,44 @@
 ---
-title: "" 
+title: ""
 author: ""
-email: "tomasz.wozniak@unimelb.edu.au"
+email: tomasz.wozniak@unimelb.edu.au
 title-slide-attributes:
   data-background-color: "#ededed"
 number-sections: false
-format: 
-  revealjs: 
-    theme: [simple, theme.scss]
+format:
+  revealjs:
+    theme:
+      - simple
+      - theme.scss
     slide-number: c
     transition: concave
     smaller: true
     multiplex: true
-execute: 
+execute:
   echo: true
+cache: true
 ---
-
 
 ```{r palette}
 #| echo: false
-pin  = "#ff68b4"
-dar  = "#ededed"
-grad = grDevices::colorRampPalette(c(dar, pin))(5)
+pin <- "#ff68b4"
+dar <- "#ededed"
+grad <- grDevices::colorRampPalette(c(dar, pin))(5)
 ```
 
-
-##  {background-color="#ededed"}
+## {background-color="#ededed"}
 
 ![](bsvars.org.png){.absolute top=80 right=725 width="400"}
 ![](bsvars.png){.absolute top=80 right=325 width="400"}
 ![](bsvarSIGNs.png){.absolute top=80 right=-75 width="400"}
 
-
-## bsvars.org design concept  {style="color:#ff68b4;"}
+## bsvars.org design concept {style="color:#ff68b4;"}
 
 ### R packages for Predictive Analyses using Bayesian Structural Vector Autoregressions
 
 $$ $$
 
 ### by Adam Wang and Tomasz Woźniak
-
-
-
-
-
 
 ## the packages and their working
 
@@ -56,14 +51,12 @@ $$ $$
 - go-to models for the analysis of policy effects
 - facilitate the analysis of **dynamic causal effects** of a well-isolated cause
 - perfect for **predictive analyses**
-- extensively used for: *monetary* and *fiscal* policy, *financial* markets, ...
+- extensively used for: _monetary_ and _fiscal_ policy, _financial_ markets, ...
 - extendible:
-    -   non-normality
-    -   heteroskedasticity
-    -   time-varying parameters
-    -   Bayesian hierarchical modelling
-
-
+  - non-normality
+  - heteroskedasticity
+  - time-varying parameters
+  - Bayesian hierarchical modelling
 
 ## the packages and their working
 
@@ -72,19 +65,21 @@ $$ $$
 :::
 
 ### Structural VARs.
-\begin{align}
-\text{VAR equation: }&& y_t &= \mathbf{A} x_{t} + \epsilon_t\\[1ex]
-\text{structural equation: }&& \mathbf{B}\epsilon_t &= u_t\\[1ex]
-\text{structural shocks: }&& u_t |Y_{t-1} &\sim N_N\left(\mathbf{0}_N,\text{diag}\left(\boldsymbol\sigma_t^2\right)\right)
-\end{align}
+
+$$
+	\begin{align}
+		\text{VAR equation: }        &  & y_t                  & = \mathbf{A} x_{t} + \epsilon_t                                                 \\[1ex]
+		\text{structural equation: } &  & \mathbf{B}\epsilon_t & = u_t                                                                           \\[1ex]
+		\text{structural shocks: }   &  & u_t |Y_{t-1}         & \sim N_N\left(\mathbf{0}_N,\text{diag}\left(\boldsymbol\sigma_t^2\right)\right)
+	\end{align}
+$$
 
 ### Features.
+
 - system dynamic modelling
 - structure of the economy modelled by $\mathbf{B}$
 - identified structural shocks $u_t$
 - time-varying variances
-
-
 
 ## the packages and their working
 
@@ -94,8 +89,44 @@ $$ $$
 
 ### Model specification.
 
+```{R, echo=FALSE}
+set.seed(123)
 
+library(bsvarSIGNs)
 
+data <- readxl::read_excel("./VARData.xlsx")
+data[, 3:7] <- 100 * log(data[, 3:7]) # log transformation
+
+# endogenous variables
+Y <- as.matrix(data[, 2:5])
+
+# exogenous variables
+Z <- data[, 6:8] |>
+  as.matrix() |>
+  bsvars::specify_data_matrices$new(p = 4) # 4 lags
+Z <- rbind(matrix(0, 4, 12), t(Z$X[-nrow(Z$X), ])) # pad with zeros
+
+# sign restrictions of +ve monetary policy shock
+# restrictions on impulse response functions
+sign_irf <- matrix(NA, 4, 4)
+sign_irf[1, 1] <- sign_irf[4, 1] <- 1 # +ve impact on cash rate and exchange rate
+sign_irf[3, 1] <- -1 # -ve impact on consumer price index
+sign_irf <- array(sign_irf, c(4, 4, 4)) # last for 4 periods
+
+# restrictions on policy reaction function
+sign_structural <- matrix(NA, 4, 4)
+sign_structural[1, ] <- c(1, -1, -1, 1)
+```
+
+```{R}
+# specify the model
+spec <- specify_bsvarSIGN$new(
+  Y,
+  p = 4,
+  sign_irf = sign_irf,
+  sign_structural = sign_structural
+)
+```
 
 ## the packages and their working
 
@@ -103,10 +134,20 @@ $$ $$
 [bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
 :::
 
+```{R, echo=FALSE}
+# disable dummy observation priors
+spec$prior$Ysoc <- matrix(NA, nrow(spec$prior$Ysoc), 0)
+spec$prior$Xsoc <- matrix(NA, nrow(spec$prior$Xsoc), 0)
+spec$prior$Ysur <- matrix(NA, nrow(spec$prior$Ysur), 0)
+spec$prior$Xsur <- matrix(NA, nrow(spec$prior$Xsur), 0)
+```
+
 ### Estimation.
 
-
-
+```{R}
+# sample posterior draws
+post <- estimate(spec, S = 5000)
+```
 
 ## the packages and their working
 
@@ -116,8 +157,11 @@ $$ $$
 
 ### Forecasting.
 
-
-
+```{R}
+post |>
+  forecast(h = 4) |>
+  plot(data_in_plot = 0.1)
+```
 
 ## the packages and their working
 
@@ -127,8 +171,11 @@ $$ $$
 
 ### Forecast error variance decomposition.
 
-
-
+```{R}
+post |>
+  compute_variance_decompositions(h = 20) |>
+  plot()
+```
 
 ## the packages and their working
 
@@ -138,8 +185,11 @@ $$ $$
 
 ### Impulse responses.
 
-
-
+```{R}
+post |>
+  compute_impulse_responses(h = 20) |>
+  plot(probability = 0.68)
+```
 
 ## the packages and their working
 
@@ -149,9 +199,11 @@ $$ $$
 
 ### Historical Decompositions.
 
-
-
-
+```{R}
+post |>
+  compute_historical_decompositions() |>
+  plot()
+```
 
 ## target audience
 
@@ -159,26 +211,24 @@ $$ $$
 [bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
 :::
 
-- **academic researchers** 
+- **academic researchers**
+
   - reproducibility, transparency, literature context
 
-- **PhD students** 
+- **PhD students**
+
   - communication, extendibility, up-to date with the newest developments
 
-- **master students** 
+- **master students**
+
   - simple workflows, documentation and examples, video presentations
 
-- **applied economists**  
+- **applied economists**
+
   - reliability, speed, incorporating feedback on new features
 
-- **economic governance institutions** 
+- **economic governance institutions**
   - workflow integration, reporting practices, off-the-shelf applications
-
-
-
-
-
-
 
 ## bsvars.org design concept
 
@@ -193,12 +243,6 @@ $$ $$
 -speed of algorithms written using compiled code, **C++**
 
 -convenience of data analysis using interpreted code, **R**
-
-
-
-
-
-
 
 ## bsvars.org design concept
 
@@ -217,12 +261,6 @@ $$ $$
 - super fast on loops (Gibbs sampler in **bsvars** is a serial job)
 - parallel computations using **openMP** (independent sampler in **bsvarSIGNs**)
 
-
-
-
-
-
-
 ## bsvars.org design concept
 
 ::: footer
@@ -238,11 +276,6 @@ $$ $$
 - excellent documentation and support in package development
 - makes **C++** code as expressive as **R**'s
 
-
-
-
-
-
 ## bsvars.org design concept
 
 ::: footer
@@ -253,7 +286,7 @@ $$ $$
 
 ### 4. **R6** management of the input object
 
-- minimal scripting `specify_bsvar$new()` provides basic setup of:      - starting values
+- minimal scripting `specify_bsvar$new()` provides basic setup of: - starting values
   - identification
   - data matrices
   - prior hyper-parameters (each of them are lists with **R6** structure)
@@ -261,14 +294,6 @@ $$ $$
 - possibility of coherent customisation using in functions **R6** public elements
 - essential specification variables managed by **R6** private elements
 
-
-
-
-
-
-
-
-
 ## bsvars.org design concept
 
 ::: footer
@@ -277,17 +302,12 @@ $$ $$
 
 $$ $$
 
-### 5. Establish a set of generics in **bsvars** 
+### 5. Establish a set of generics in **bsvars**
 
-- provide model-specific methods in other packages 
-- assure similar workflows 
+- provide model-specific methods in other packages
+- assure similar workflows
 - implement through `Depends:` and `Imports:`
 
-
-
-
-
-
 ## bsvars.org design concept
 
 ::: footer
@@ -296,20 +316,21 @@ $$ $$
 
 $$ $$
 
-### 6. `S3` generics and methods 
+### 6. `S3` generics and methods
 
-- simple workflows 
+- simple workflows
+
 ```{r simple}
 #| eval: false
 
-us_fiscal_lsuw |> 
-  specify_bsvar$new(p = 4) |> 
+us_fiscal_lsuw |>
+  specify_bsvar$new(p = 4) |>
   estimate(S = 1000) |>
   estimate(S = 5000) -> post
 ```
 
-
 - full transparency on what model is used
+
 ```{r generics}
 #| eval: false
 
@@ -321,17 +342,6 @@ bsvars::estimate.BSVARSV
 bsvars::estimate.BSVARMSH
 bsvarSIGNs::estimate.BSVARSIGN
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 ## bsvars.org design concept
 
@@ -349,13 +359,6 @@ $$ $$
 - assure consistency in object declarations
 - assignment by reference not working across packages
 
-
-
-
-
-
-
-
 ## bsvars.org design concept
 
 ::: footer
@@ -369,13 +372,8 @@ $$ $$
 - provide all the outputs, posterior draws
   - insightful users can can compute demanded quantities not provided in the packages
 - provide all the basic functionality with well-designed workflows
-  - `plot` and `summary` methods for users valuing simplicity in scripting 
-  - *It's amazing how much you do with a few lines of code!*
-
-
-
-
-
+  - `plot` and `summary` methods for users valuing simplicity in scripting
+  - _It's amazing how much you do with a few lines of code!_
 
 ## bsvars.org design concept
 
@@ -389,15 +387,15 @@ $$ $$
 
 - documentation pitched to users of various level of advancement
 - **pkgdown** website with package features, social media chanels, and updates on the most recent presentations!
-- a vignette to be sent to the *Journal of Statistical Software* or the *R Journal*
+- a vignette to be sent to the _Journal of Statistical Software_ or the _R Journal_
 
+## Student's experience
 
-
-
-
-
-
-
+- make something useful to the world
+- collaborate and learn from others
+- gain programming experience (especially in C++)
+- adds competency to the CV
+- being a package developer is fun!
 
 ## future developments
 
@@ -427,7 +425,7 @@ $$ $$
 
 $$ $$
 
-### upcoming packages 
+### upcoming packages
 
 - **bvarPANELs** - Bayesian Panel VAR forecasting of labour market outcomes for the International Labour Organization
 - **bsvarTVPs** with Annika Camehl - Time-varying identification of Structural VARs as an extension to **bsvars**
@@ -435,10 +433,6 @@ $$ $$
 - **bvarGIGs** with Rui Liu and Andres Ramirez Hassan - Bayesian forecasting with VARs with flexible shrinkage
 - **bsmars** with Loncan Li - Bayesian forecasting with Matrix Autoregression
 
-
-
-
-
-##  {background-color="#ededed"}
+## {background-color="#ededed"}
 
 ![](social.png){.absolute top=10 right=10 width="1000"}
