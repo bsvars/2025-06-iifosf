@@ -411,7 +411,6 @@
 <li>facilitate the analysis of <strong>dynamic causal effects</strong> of a well-isolated cause</li>
 <li>perfect for <strong>predictive analyses</strong></li>
 <li>extensively used for: <em>monetary</em> and <em>fiscal</em> policy, <em>financial</em> markets, …</li>
-<li>require identification of the cause of the dynamic effects</li>
 <li>extendible:
 <ul>
 <li>non-normality</li>
@@ -488,11 +487,26 @@
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <ul>
-<li><p><strong>academic researchers</strong> reproducibility, transparency, literature context</p></li>
-<li><p><strong>PhD students</strong> communication, extendibility, up-to date with the newest developments</p></li>
-<li><p><strong>master students</strong> simple workflows, documentation and examples, video presentations</p></li>
-<li><p><strong>applied economists</strong> reliability, speed, incorporating feedback on new features</p></li>
-<li><p><strong>economic governance institutions</strong> workflow integration, reporting practices, off-the-shelf applications</p></li>
+<li><strong>academic researchers</strong>
+<ul>
+<li>reproducibility, transparency, literature context</li>
+</ul></li>
+<li><strong>PhD students</strong>
+<ul>
+<li>communication, extendibility, up-to date with the newest developments</li>
+</ul></li>
+<li><strong>master students</strong>
+<ul>
+<li>simple workflows, documentation and examples, video presentations</li>
+</ul></li>
+<li><strong>applied economists</strong>
+<ul>
+<li>reliability, speed, incorporating feedback on new features</li>
+</ul></li>
+<li><strong>economic governance institutions</strong>
+<ul>
+<li>workflow integration, reporting practices, off-the-shelf applications</li>
+</ul></li>
 </ul>
 </section>
 <section id="bsvars.org-design-concept-1" class="slide level2">
@@ -549,7 +563,7 @@
 <li>data matrices</li>
 <li>prior hyper-parameters (each of them are lists with <strong>R6</strong> structure)</li>
 </ul></li>
-<li>ample modelling choices managed by arguments of <code>specify_bsvar*$new()</code></li>
+<li>ample modelling choices managed by arguments of <code>specify_bsvar$new()</code></li>
 <li>possibility of coherent customisation using in functions <strong>R6</strong> public elements</li>
 <li>essential specification variables managed by <strong>R6</strong> private elements</li>
 </ul>
@@ -608,8 +622,7 @@
 <li>implement through <code>LinkingTo:</code> and <code>Depends:</code></li>
 <li>pointer management</li>
 <li>assure consistency in object declarations</li>
-<li>assignment by reference not working accross packages</li>
-<li>mysterious working of <code>[[Rcpp:interface(cpp)]]</code> (does not export al <strong>C++</strong> functions)</li>
+<li>assignment by reference not working across packages</li>
 </ul>
 </section>
 <section id="bsvars.org-design-concept-8" class="slide level2">

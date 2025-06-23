@@ -57,7 +57,6 @@ $$ $$
 - facilitate the analysis of **dynamic causal effects** of a well-isolated cause
 - perfect for **predictive analyses**
 - extensively used for: *monetary* and *fiscal* policy, *financial* markets, ...
-- require identification of the cause of the dynamic effects
 - extendible:
     -   non-normality
     -   heteroskedasticity
@@ -160,15 +159,20 @@ $$ $$
 [bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
 :::
 
-- **academic researchers** reproducibility, transparency, literature context
+- **academic researchers** 
+  - reproducibility, transparency, literature context
 
-- **PhD students** communication, extendibility, up-to date with the newest developments
+- **PhD students** 
+  - communication, extendibility, up-to date with the newest developments
 
-- **master students** simple workflows, documentation and examples, video presentations
+- **master students** 
+  - simple workflows, documentation and examples, video presentations
 
-- **applied economists**  reliability, speed, incorporating feedback on new features
+- **applied economists**  
+  - reliability, speed, incorporating feedback on new features
 
-- **economic governance institutions** workflow integration, reporting practices, off-the-shelf applications
+- **economic governance institutions** 
+  - workflow integration, reporting practices, off-the-shelf applications
 
 
 
@@ -253,7 +257,7 @@ $$ $$
   - identification
   - data matrices
   - prior hyper-parameters (each of them are lists with **R6** structure)
-- ample modelling choices managed by arguments of `specify_bsvar*$new()`
+- ample modelling choices managed by arguments of `specify_bsvar$new()`
 - possibility of coherent customisation using in functions **R6** public elements
 - essential specification variables managed by **R6** private elements
 
@@ -343,9 +347,7 @@ $$ $$
 - implement through `LinkingTo:` and `Depends:`
 - pointer management
 - assure consistency in object declarations
-- assignment by reference not working accross packages
-- mysterious working of `[[Rcpp:interface(cpp)]]` (does not export al **C++** functions)
-
+- assignment by reference not working across packages
 
 
 
