@@ -105,6 +105,14 @@ In this presentation, we will also talk about our experience when developing pac
 - pkgdown website with package features, social media chanells, and updates on the most recent presentations!
 - Write up a vignette that will be sent to JSS or the R Journal (once the methodological paper is published)
 
+## Student's experience
+
+- want to make something useful to the world
+- collaborate and learn from others, otherwise developing an R package seems very difficult
+- gain programming experience, especially in C++
+- adds competency to the CV
+- being a package developer is interesting and fun
+
 ## Future developments
 
 1.  **bvarPANELs** - Bayesian forecasting of labour market outcomes for the ILO using Panel VARs
@@ -112,4 +120,3 @@ In this presentation, we will also talk about our experience when developing pac
 3.  **bsvarCFs** with Dan - Bayesian forecasting with VARs subject to soft and hard restrictions as an extension to **bsvars** and **bsvarSIGNs**
 4.  **bvarNWish** with Andres and Rui - Bayesian forecasting with VARs with flexible shrinkage
 5.  **bsmars** with Loncan - Bayesian forecasting with Matrix Autoregressions
-
