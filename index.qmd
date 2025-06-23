@@ -89,7 +89,7 @@ $$
 
 ### Model specification.
 
-```{R, echo=FALSE}
+```{R, echo=FALSE, cache=TRUE}
 set.seed(123)
 
 library(bsvarSIGNs)
@@ -118,7 +118,7 @@ sign_structural <- matrix(NA, 4, 4)
 sign_structural[1, ] <- c(1, -1, -1, 1)
 ```
 
-```{R}
+```{R, cache=TRUE}
 sign_irf[, , 1]
 
 sign_structural
@@ -138,7 +138,7 @@ spec <- specify_bsvarSIGN$new(
 [bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
 :::
 
-```{R, echo=FALSE}
+```{R, echo=FALSE, cache=TRUE}
 # disable dummy observation priors
 spec$prior$Ysoc <- matrix(NA, nrow(spec$prior$Ysoc), 0)
 spec$prior$Xsoc <- matrix(NA, nrow(spec$prior$Xsoc), 0)
@@ -148,7 +148,7 @@ spec$prior$Xsur <- matrix(NA, nrow(spec$prior$Xsur), 0)
 
 ### Estimation.
 
-```{R}
+```{R, cache=TRUE}
 # sample posterior draws
 post <- estimate(spec, S = 5000)
 ```
@@ -161,7 +161,7 @@ post <- estimate(spec, S = 5000)
 
 ### Forecasting.
 
-```{R}
+```{R, cache=TRUE}
 post |>
   forecast(h = 4) |>
   plot(data_in_plot = 0.1)
@@ -175,7 +175,7 @@ post |>
 
 ### Forecast error variance decomposition.
 
-```{R}
+```{R, cache=TRUE}
 post |>
   compute_variance_decompositions(h = 20) |>
   plot()
@@ -189,7 +189,7 @@ post |>
 
 ### Impulse responses.
 
-```{R}
+```{R, cache=TRUE}
 post |>
   compute_impulse_responses(h = 20) |>
   plot(probability = 0.68)
@@ -203,7 +203,7 @@ post |>
 
 ### Historical Decompositions.
 
-```{R}
+```{R, cache=TRUE}
 post |>
   compute_historical_decompositions() |>
   plot()
@@ -290,7 +290,8 @@ $$ $$
 
 ### 4. **R6** management of the input object
 
-- minimal scripting `specify_bsvar$new()` provides basic setup of: - starting values
+- minimal scripting `specify_bsvar$new()` provides basic setup of: 
+  - starting values
   - identification
   - data matrices
   - prior hyper-parameters (each of them are lists with **R6** structure)
@@ -339,11 +340,13 @@ us_fiscal_lsuw |>
 #| eval: false
 
 bsvars::estimate
-bsvars::estimate.BSVAR
-bsvars::estimate.BSVART
-bsvars::estimate.BSVARMIX
-bsvars::estimate.BSVARSV
-bsvars::estimate.BSVARMSH
+
+bsvars::estimate.BSVAR              bsvars::estimate.PosteriorBSVAR
+bsvars::estimate.BSVART             bsvars::estimate.PosteriorBSVART
+bsvars::estimate.BSVARMIX           bsvars::estimate.PosteriorBSVARMIX
+bsvars::estimate.BSVARMSH           bsvars::estimate.PosteriorBSVARMSH
+bsvars::estimate.BSVARSV            bsvars::estimate.PosteriorBSVARSV
+
 bsvarSIGNs::estimate.BSVARSIGN
 ```
 
