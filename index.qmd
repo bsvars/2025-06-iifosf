@@ -290,7 +290,7 @@ $$ $$
 
 ### 4. **R6** management of the input object
 
-- minimal scripting `specify_bsvar$new()` provides basic setup of: 
+- minimal scripting `specify_bsvar$new()` provides basic setup of:
   - starting values
   - identification
   - data matrices
@@ -298,6 +298,31 @@ $$ $$
 - ample modelling choices managed by arguments of `specify_bsvar$new()`
 - possibility of coherent customisation using in functions **R6** public elements
 - essential specification variables managed by **R6** private elements
+
+## bsvars.org design concept
+
+::: footer
+[bsvars.org design concept](https://bsvars.org/2025-06-iifosf/)
+:::
+
+$$ $$
+
+### 4. **R6** management of the input object
+
+- R6 is R's object-oriented programming system
+- both spec and spec$prior are R6 objects
+- modify a public field
+
+```{R}
+spec$prior$A[1, 1] <- 0
+spec$prior$A
+```
+
+- call a public method
+
+```{R}
+spec$prior$estimate_hyper()
+```
 
 ## bsvars.org design concept
 
@@ -321,33 +346,27 @@ $$ $$
 
 $$ $$
 
-### 6. `S3` generics and methods
+### 6. `S3` methods
 
+- R's native object-oriented programming system
 - simple workflows
 
 ```{r simple}
 #| eval: false
 
-us_fiscal_lsuw |>
-  specify_bsvar$new(p = 4) |>
-  estimate(S = 1000) |>
-  estimate(S = 5000) -> post
+... |>
+  plot()
 ```
 
-- full transparency on what model is used
+- same method for different objects
+- applies to objects generated from both packages **bsvars** and **bsvarSIGNs**
 
 ```{r generics}
 #| eval: false
-
-bsvars::estimate
-
-bsvars::estimate.BSVAR              bsvars::estimate.PosteriorBSVAR
-bsvars::estimate.BSVART             bsvars::estimate.PosteriorBSVART
-bsvars::estimate.BSVARMIX           bsvars::estimate.PosteriorBSVARMIX
-bsvars::estimate.BSVARMSH           bsvars::estimate.PosteriorBSVARMSH
-bsvars::estimate.BSVARSV            bsvars::estimate.PosteriorBSVARSV
-
-bsvarSIGNs::estimate.BSVARSIGN
+bsvars::plot.Forecasts
+bsvars::plot.PosteriorFEVD
+bsvars::plot.PosteriorIR
+bsvars::plot.PosteriorHD
 ```
 
 ## bsvars.org design concept
