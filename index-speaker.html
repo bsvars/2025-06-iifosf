@@ -202,6 +202,16 @@
 <p><span class="math display">\[ \]</span></p>
 <h3 id="by-adam-wang-and-tomasz-woźniak">by Adam Wang and Tomasz Woźniak</h3>
 </section>
+<section id="students-experience" class="slide level2">
+<h2>Student’s experience</h2>
+<ul>
+<li>make something useful to the world</li>
+<li>collaborate and learn from others</li>
+<li>gain programming experience (especially in C++)</li>
+<li>adds competency to the CV</li>
+<li>being a package developer is fun!</li>
+</ul>
+</section>
 <section id="the-packages-and-their-working" class="slide level2">
 <h2>the packages and their working</h2>
 <div class="footer">
@@ -430,7 +440,30 @@ bsvars: Bayesian Structural Vector Autoregressions|
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="r6-management-of-the-input-object">4. <strong>R6</strong> management of the input object</h3>
+<h3 id="delegate-computational-tasks-to-c-code">4. Delegate computational tasks to <strong>C++</strong> code</h3>
+<ul>
+<li>all time intensive tasks are implemented in <strong>C++</strong>
+<ul>
+<li>parameter estimation</li>
+<li>forecasts</li>
+<li>impulse response functions</li>
+<li>etc.</li>
+</ul></li>
+<li>only user interface and data management is done in <strong>R</strong>
+<ul>
+<li>R6 objects for specification</li>
+<li>R wrapper functions for estimation, forecasting, etc.</li>
+<li>plotting and summary methods</li>
+</ul></li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-5" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="r6-management-of-the-input-object">5. <strong>R6</strong> management of the input object</h3>
 <ul>
 <li>minimal scripting <code>specify_bsvar$new()</code> provides basic setup of:
 <ul>
@@ -444,13 +477,13 @@ bsvars: Bayesian Structural Vector Autoregressions|
 <li>essential specification variables managed by <strong>R6</strong> private elements</li>
 </ul>
 </section>
-<section id="bsvars.org-design-concept-5" class="slide level2">
+<section id="bsvars.org-design-concept-6" class="slide level2">
 <h2>bsvars.org design concept</h2>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="r6-management-of-the-input-object-1">4. <strong>R6</strong> management of the input object</h3>
+<h3 id="r6-management-of-the-input-object-1">5. <strong>R6</strong> management of the input object</h3>
 <ul>
 <li>R6 is R’s object-oriented programming system</li>
 <li>both spec and spec$prior are R6 objects</li>
@@ -484,26 +517,26 @@ bsvars: Bayesian Structural Vector Autoregressions|
 </div>
 </div>
 </section>
-<section id="bsvars.org-design-concept-6" class="slide level2">
-<h2>bsvars.org design concept</h2>
-<div class="footer">
-<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
-</div>
-<p><span class="math display">\[ \]</span></p>
-<h3 id="establish-a-set-of-generics-in-bsvars">5. Establish a set of generics in <strong>bsvars</strong></h3>
-<ul>
-<li>provide model-specific methods in other packages</li>
-<li>assure similar workflows</li>
-<li>implement through <code>Depends:</code> and <code>Imports:</code></li>
-</ul>
-</section>
 <section id="bsvars.org-design-concept-7" class="slide level2">
 <h2>bsvars.org design concept</h2>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="s3-methods">6. <code>S3</code> methods</h3>
+<h3 id="establish-a-set-of-generics-in-bsvars">6. Establish a set of generics in <strong>bsvars</strong></h3>
+<ul>
+<li>provide model-specific methods in other packages</li>
+<li>assure similar workflows</li>
+<li>implement through <code>Depends:</code> and <code>Imports:</code></li>
+</ul>
+</section>
+<section id="bsvars.org-design-concept-8" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="s3-methods">7. <code>S3</code> methods</h3>
 <ul>
 <li>R’s native object-oriented programming system</li>
 <li>simple workflows</li>
@@ -523,13 +556,43 @@ bsvars: Bayesian Structural Vector Autoregressions|
 <span id="cb18-4"><a href=""></a>bsvars<span class="sc">::</span>plot.PosteriorHD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bsvars.org-design-concept-8" class="slide level2">
+<section id="bsvars.org-design-concept-9" class="slide level2">
 <h2>bsvars.org design concept</h2>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="export-all-c-functions-in-a-library">7. export all <strong>C++</strong> functions in a library</h3>
+<h3 id="s3-generics-and-methods">7. <code>S3</code> generics and methods</h3>
+<ul>
+<li>simple workflows</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>us_fiscal_lsuw <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href=""></a>  specify_bsvar<span class="sc">$</span><span class="fu">new</span>(<span class="at">p =</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href=""></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">5000</span>) <span class="ot">-&gt;</span> post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>full transparency on what model is used</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>bsvars<span class="sc">::</span>estimate</span>
+<span id="cb20-2"><a href=""></a></span>
+<span id="cb20-3"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVAR              bsvars<span class="sc">::</span>estimate.PosteriorBSVAR</span>
+<span id="cb20-4"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVART             bsvars<span class="sc">::</span>estimate.PosteriorBSVART</span>
+<span id="cb20-5"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARMIX           bsvars<span class="sc">::</span>estimate.PosteriorBSVARMIX</span>
+<span id="cb20-6"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARMSH           bsvars<span class="sc">::</span>estimate.PosteriorBSVARMSH</span>
+<span id="cb20-7"><a href=""></a>bsvars<span class="sc">::</span>estimate.BSVARSV            bsvars<span class="sc">::</span>estimate.PosteriorBSVARSV</span>
+<span id="cb20-8"><a href=""></a></span>
+<span id="cb20-9"><a href=""></a>bsvarSIGNs<span class="sc">::</span>estimate.BSVARSIGN</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bsvars.org-design-concept-10" class="slide level2">
+<h2>bsvars.org design concept</h2>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<h3 id="export-all-c-functions-in-a-library">8. export all <strong>C++</strong> functions in a library</h3>
 <ul>
 <li>for developers to access all code for their <strong>R</strong> package development using <strong>C++</strong> code</li>
 <li>implement through <code>LinkingTo:</code> and <code>Depends:</code></li>
@@ -538,13 +601,13 @@ bsvars: Bayesian Structural Vector Autoregressions|
 <li>assignment by reference not working across packages</li>
 </ul>
 </section>
-<section id="bsvars.org-design-concept-9" class="slide level2">
+<section id="bsvars.org-design-concept-11" class="slide level2">
 <h2>bsvars.org design concept</h2>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="outputs-and-workflows-to-target-various-users">8. Outputs and workflows to target various users</h3>
+<h3 id="outputs-and-workflows-to-target-various-users">9. Outputs and workflows to target various users</h3>
 <ul>
 <li>provide all the outputs, posterior draws
 <ul>
@@ -557,27 +620,17 @@ bsvars: Bayesian Structural Vector Autoregressions|
 </ul></li>
 </ul>
 </section>
-<section id="bsvars.org-design-concept-10" class="slide level2">
+<section id="bsvars.org-design-concept-12" class="slide level2">
 <h2>bsvars.org design concept</h2>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-06-iifosf/">bsvars.org design concept</a></p>
 </div>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="extensive-resources">9. Extensive resources</h3>
+<h3 id="extensive-resources">10. Extensive resources</h3>
 <ul>
 <li>documentation pitched to users of various level of advancement</li>
 <li><strong>pkgdown</strong> website with package features, social media chanels, and updates on the most recent presentations!</li>
 <li>a vignette to be sent to the <em>Journal of Statistical Software</em> or the <em>R Journal</em></li>
-</ul>
-</section>
-<section id="students-experience" class="slide level2">
-<h2>Student’s experience</h2>
-<ul>
-<li>make something useful to the world</li>
-<li>collaborate and learn from others</li>
-<li>gain programming experience (especially in C++)</li>
-<li>adds competency to the CV</li>
-<li>being a package developer is fun!</li>
 </ul>
 </section>
 <section id="future-developments" class="slide level2">
@@ -611,7 +664,7 @@ bsvars: Bayesian Structural Vector Autoregressions|
 <li><strong>bsvarTVPs</strong> with Annika Camehl - Time-varying identification of Structural VARs as an extension to <strong>bsvars</strong></li>
 <li><strong>bsvarCFs</strong> with Dan Zhu - Bayesian forecasting with VARs subject to soft and hard restrictions as an extension to <strong>bsvars</strong> and <strong>bsvarSIGNs</strong></li>
 <li><strong>bvarGIGs</strong> with Rui Liu and Andres Ramirez Hassan - Bayesian forecasting with VARs with flexible shrinkage</li>
-<li><strong>bsmars</strong> with Loncan Li - Bayesian forecasting with Matrix Autoregression</li>
+<li><strong>bsmars</strong> with Longcan Li - Bayesian forecasting with Matrix Autoregression</li>
 </ul>
 </section>
 <section id="section-1" class="slide level2" data-background-color="#ededed">
